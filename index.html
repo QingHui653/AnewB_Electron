@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    We are using node <script>document.write(process.versions.node)</script>,
+    Chrome <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+    <br>
+    <button class="demo-button" id="basic-noti">发起一条基本通知</button>
+    <button class="demo-button" id="advanced-noti">发起一条带图片的通知</button>
+  </body>
+</html>
+
+<script type="text/javascript">
+  require('./renderer-process/native-ui/notifications/basic-notification')
+  require('./renderer-process/native-ui/notifications/advanced-notification')
+</script>
