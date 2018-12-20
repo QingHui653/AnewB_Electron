@@ -3,6 +3,7 @@ const path = require('path')
 
 const codeBlocksWithPaths = document.querySelectorAll('code[data-path]')
 
+// JS代码高亮
 Array.prototype.forEach.call(codeBlocksWithPaths, (code) => {
   const codePath = path.join(__dirname, '..', code.dataset.path)
   const extension = path.extname(codePath)

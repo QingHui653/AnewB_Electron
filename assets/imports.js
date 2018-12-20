@@ -1,5 +1,7 @@
 const links = document.querySelectorAll('link[rel="import"]')
 
+//<link rel="import" href="sections/about.html">
+// 将所有 链接为 此的 html 载入. 
 // Import and add each page to the DOM
 Array.prototype.forEach.call(links, (link) => {
   let template = link.import.querySelector('.task-template')

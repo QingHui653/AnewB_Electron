@@ -1,15 +1,20 @@
 const settings = require('electron-settings')
 
+// 添加导航栏的 监听事件
 document.body.addEventListener('click', (event) => {
+  //判断 是否 有选择 触发选择事件
   if (event.target.dataset.section) {
     handleSectionTrigger(event)
+  // 触发点击事件
   } else if (event.target.dataset.modal) {
     handleModalTrigger(event)
+  // 判断是否全部隐藏modal 栏  
   } else if (event.target.classList.contains('modal-hide')) {
     hideAllModals()
   }
 })
 
+//选择事件
 function handleSectionTrigger (event) {
   hideAllSectionsAndDeselectButtons()
 
@@ -33,13 +38,13 @@ function showMainContent () {
   document.querySelector('.js-nav').classList.add('is-shown')
   document.querySelector('.js-content').classList.add('is-shown')
 }
-
+//先隐藏全部 ,在将选择的 模态栏 显示出来
 function handleModalTrigger (event) {
   hideAllModals()
   const modalId = `${event.target.dataset.modal}-modal`
   document.getElementById(modalId).classList.add('is-shown')
 }
-
+// 隐藏全部 ,显示 主 模态栏
 function hideAllModals () {
   const modals = document.querySelectorAll('.modal.is-shown')
   Array.prototype.forEach.call(modals, (modal) => {

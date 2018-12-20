@@ -18,6 +18,8 @@ function createWindow () {
   // 然后加载应用的 index.html。
   win.loadFile('index.html')
 
+  //暂时还没定义
+  let debug = true;
   if (debug) {
     win.webContents.openDevTools()
     win.maximize()
