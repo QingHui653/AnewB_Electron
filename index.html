@@ -2,20 +2,104 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/nativize.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/section.css">
+    <link rel="stylesheet" href="assets/css/demo.css">
+    <link rel="stylesheet" href="assets/css/github.css">
+
+    <link rel="import" href="sections/about.html">
+
+    <title>Main</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-    <br>
+    <nav class="nav js-nav">
+      <header class="nav-header">
+        <h1 class="nav-title">Electron <strong>API Demos</strong></h1>
+        <svg class="nav-header-icon"><use xlink:href="assets/img/icons.svg#icon-electron"></use></svg>
+      </header>
+  
+      <div class="nav-item u-category-windows">
+        <h5 class="nav-category">
+          <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
+          Windows(窗口)
+        </h5>
+        <button type="button" id="button-windows" data-section="windows" class="nav-button">Create and manage <em>windows</em>(创建和管理窗口)</button>
+        <button type="button" id="button-crash-hang" data-section="crash-hang" class="nav-button">Handling window <em>crashes and hangs</em>(处理窗口事件)</button>
+      </div>
+
+      <div class="nav-item u-category-menu">
+        <h5 class="nav-category">
+          <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-menu"></use></svg>
+          Menus(菜单)
+        </h5>
+        <button type="button" id="button-menus" data-section="menus" class="nav-button">Customize<em>menus</em> (自定义菜单) </button>
+        <button type="button" id="button-shortcuts" data-section="shortcuts" class="nav-button">Register keyboard <em>shortcuts</em>(注册按键)</button>
+      </div>
+  
+      <div class="nav-item u-category-native-ui">
+        <h5 class="nav-category">
+          <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-native-ui"></use></svg>
+          Native User Interface(本地用户接口)</h5>
+        <button type="button" id="button-ex-links-file-manager" data-section="ex-links-file-manager" class="nav-button">Open <em>external links</em> or system <em>file manager</em>(打开文件系统)</button>
+        <button type="button" id="button-notifications" data-section="notifications" class="nav-button"> <em>Notifications</em> with and without custom image(提醒)</button>
+        <button type="button" id="button-dialogs" data-section="dialogs" class="nav-button">Use system <em>dialogs</em>(系统对话)</button>
+        <button type="button" id="button-tray" data-section="tray" class="nav-button">Put your app in the <em>tray</em>(在托盘中显示)</button>
+        <button type="button" id="button-drag" data-section="drag" class="nav-button"><em>Drag</em> and drop files(拖拽文件)</button>
+      </div>
+  
+      <div class="nav-item u-category-communication">
+        <h5 class="nav-category">
+          <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-communication"></use></svg>
+          Communication(通信)
+        </h5>
+        <button type="button" id="button-ipc" data-section="ipc" class="nav-button">Communicate between the <em>two processes(进程间通信)</em></button>
+      </div>
+  
+      <div class="nav-item u-category-system">
+        <h5 class="nav-category">
+          <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-system"></use></svg>
+          System(系统)
+        </h5>
+        <button type="button" id="button-app-sys-information" data-section="app-sys-information" class="nav-button" >Get app or user <em>system information(获取系统信息)</em></button>
+        <button type="button" id="button-clipboard" data-section="clipboard" class="nav-button">Copy and paste from the <em>clipboard</em>(复制粘贴)</button>
+        <button type="button" id="button-protocol" data-section="protocol" class="nav-button">Launch app from <em>protocol handler</em>(从协议启动APP)</button>
+      </div>
+  
+      <div class="nav-item u-category-media">
+        <h5 class="nav-category">
+          <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-media"></use></svg>
+          Media(媒体)
+        </h5>
+        <button type="button" id="button-desktop-capturer" data-section="desktop-capturer" class="nav-button">Take a <em>screenshot</em>(截图)</button>
+      </div>
+  
+      <footer class="nav-footer">
+        <button type="button" id="button-about" data-modal="about" class="nav-footer-button">About(关于)</button>
+        <a class="nav-footer-logo" href="https://github.com" aria-label="Homepage">
+          <svg class="nav-footer-icon"><use xlink:href="assets/img/icons.svg#icon-love"></use></svg>
+        </a>
+      </footer>
+    </nav>
+  
+    <main class="content js-content"></main>
+  
     <button class="demo-button" id="basic-noti">发起一条基本通知</button>
     <button class="demo-button" id="advanced-noti">发起一条带图片的通知</button>
   </body>
 </html>
+<script>
+    require('./assets/imports')
+    require('./assets/ex-links')
+    require('./assets/nav')
+    require('./assets/demo-btns')
+    require('./assets/code-blocks')
+    require('./assets/normalize-shortcuts')
 
-<script type="text/javascript">
-  require('./renderer-process/native-ui/notifications/basic-notification')
-  require('./renderer-process/native-ui/notifications/advanced-notification')
+    require('./renderer-process/native-ui/notifications/basic-notification')
+    require('./renderer-process/native-ui/notifications/advanced-notification')
 </script>

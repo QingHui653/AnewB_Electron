@@ -1,3 +1,5 @@
+
+const path = require('path')
 const { app, BrowserWindow } = require('electron')
 
 // 保持对window对象的全局引用，如果不这么做的话，当JavaScript对象被
@@ -6,10 +8,21 @@ let win
 
 function createWindow () {
   // 创建浏览器窗口。
-  win = new BrowserWindow({ width: 800, height: 600 })
+  win = new BrowserWindow({ 
+    width: 1080, 
+    minWidth: 680,
+    height: 840 ,
+    title: app.getName()
+  })
 
   // 然后加载应用的 index.html。
   win.loadFile('index.html')
+
+  if (debug) {
+    win.webContents.openDevTools()
+    win.maximize()
+    require('devtron').install()
+  }
 
   // 打开开发者工具
   // win.webContents.openDevTools()
@@ -28,7 +41,7 @@ function createWindow () {
 // 部分 API 在 ready 事件触发后才能使用。
 app.on('ready', createWindow)
 
-// 当全部窗口关闭时退出。
+// 当全部窗口关闭时退出。npm
 app.on('window-all-closed', () => {
   // 在 macOS 上，除非用户用 Cmd + Q 确定地退出，
   // 否则绝大部分应用及其菜单栏会保持激活。
